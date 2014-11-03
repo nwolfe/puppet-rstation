@@ -35,7 +35,33 @@
 #
 # Copyright 2014 Your name here, unless otherwise noted.
 #
-class rstation {
+class rstation(
+  $station_name    = "RStation",
+  $station_id      = "rstation",
+  $music_directory = "/var/lib/rstation/music",
+  $hostname        = "localhost",
+  $port            = "8000")
+{
+  class { 'icecast':
+    hostname        => $hostname,
+    port            => $port,
+    source_password => 'password',
+  }
 
+  class { 'mpd::server':
+    music_directory => $music_directory,
+    audio_outputs   => [{
+     'type'     => 'shout',
+     'encoding' => 'mp3',
+     'name'     => $station_name,
+     'host'     => $hostname,
+     'port'     => $port,
+     'mount'    => $station_id,
+     'password' => 'password',
+     'bitrate'  => '128',
+     'format'   => '44100:16:1'
+    }]
+  }
 
+  include mpd::client
 }
