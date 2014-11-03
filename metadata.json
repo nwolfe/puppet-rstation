@@ -8,5 +8,7 @@
   "project_page": "https://github.com/nwolfe/puppet-rstation",
   "issues_url": "https://github.com/nwolfe/puppet-rstation/issues",
   "tags": ["radio", "music", "icecast", "mpd", "mpc"],
-  "dependencies": [{"name": "nwolfe/icecast", "version_requirement": "0.1.0"}]
+  "dependencies": [
+    {"name": "nwolfe/icecast", "version_requirement": "0.1.0"},
+    {"name": "ajjahn/mpd", "version_requirement": "0.1.0"}]
 }
