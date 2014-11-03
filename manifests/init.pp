@@ -42,6 +42,10 @@ class rstation(
   $hostname        = "localhost",
   $port            = "8000")
 {
+  file { $music_directory:
+    ensure => 'directory'
+  }
+
   class { 'icecast':
     hostname        => $hostname,
     port            => $port,
