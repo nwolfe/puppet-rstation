@@ -1,0 +1,12 @@
+{
+  "name": "nwolfe-rstation",
+  "version": "0.1.0",
+  "author": "nwolfe",
+  "summary": "Interet radio station",
+  "license": "Apache 2.0",
+  "source": "https://github.com/nwolfe/puppet-rstation",
+  "project_page": "https://github.com/nwolfe/puppet-rstation",
+  "issues_url": "https://github.com/nwolfe/puppet-rstation/issues",
+  "tags": ["radio", "music", "icecast", "mpd", "mpc"],
+  "dependencies": []
+}
