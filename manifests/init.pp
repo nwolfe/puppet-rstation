@@ -38,14 +38,10 @@
 class rstation(
   $station_name    = "RStation",
   $station_id      = "rstation",
-  $music_directory = "/var/lib/rstation/music",
+  $music_directory = "/var/lib/mpd/music",
   $hostname        = "localhost",
   $port            = "8000")
 {
-  file { $music_directory:
-    ensure => 'directory'
-  }
-
   class { 'icecast':
     hostname        => $hostname,
     port            => $port,
