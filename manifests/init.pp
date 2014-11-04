@@ -38,10 +38,21 @@
 class rstation(
   $station_name    = "RStation",
   $station_id      = "rstation",
-  $music_directory = "/var/lib/mpd/music",
+  $music_directory = "/var/lib/rstation/music",
   $hostname        = "localhost",
   $port            = "8000")
 {
+  file { ['/var/lib/rstation',
+          '/var/lib/rstation/music']:
+    ensure => 'directory'
+  }
+
+  file { '/var/lib/rstation/samples':
+    ensure  => 'directory',
+    recurse => true,
+    source  => 'puppet:///modules/${module_name}/samples'
+  }
+
   class { 'icecast':
     hostname        => $hostname,
     port            => $port,
