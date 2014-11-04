@@ -50,7 +50,7 @@ class rstation(
   file { '/var/lib/rstation/samples':
     ensure  => 'directory',
     recurse => true,
-    source  => 'puppet:///modules/${module_name}/samples'
+    source  => "puppet:///modules/${module_name}/samples"
   }
 
   class { 'icecast':
