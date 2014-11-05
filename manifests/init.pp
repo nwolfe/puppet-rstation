@@ -46,19 +46,28 @@ class rstation(
           '/var/lib/rstation/music']:
     ensure => 'directory'
   }
-
+  ->
   file { '/var/lib/rstation/samples':
     ensure  => 'directory',
     recurse => true,
     source  => "puppet:///modules/${module_name}/samples"
   }
-
+  ->
   class { 'icecast':
     hostname        => $hostname,
     port            => $port,
     source_password => 'password',
   }
-
+  ->
+  if $operatingsystem == 'Fedora' {
+    notify { 'Installing rpmfusion': }
+    ->
+    class { 'rpmfusion':
+      repos   => ['-', 'updates-released'],
+      nonfree => 1
+    }
+  }
+  ->
   class { 'mpd::server':
     music_directory => $music_directory,
     audio_outputs   => [{
@@ -73,6 +82,6 @@ class rstation(
      'format'   => '44100:16:1'
     }]
   }
-
-  include mpd::client
+  ->
+  class { 'mpd::client': }
 }

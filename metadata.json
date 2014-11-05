@@ -10,5 +10,6 @@
   "tags": ["radio", "music", "icecast", "mpd", "mpc"],
   "dependencies": [
     {"name": "nwolfe/icecast", "version_requirement": "0.1.0"},
-    {"name": "ajjahn/mpd", "version_requirement": "0.1.0"}]
+    {"name": "ajjahn/mpd", "version_requirement": "0.1.0"},
+    {"name": "lboynton/rpmfusion", "version_requirement": "0.0.4"}]
 }
