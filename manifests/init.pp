@@ -58,7 +58,7 @@ class rstation(
     port            => $port,
     source_password => 'password',
   }
-  ->
+
   if $operatingsystem == 'Fedora' {
     notify { 'Installing rpmfusion': }
     ->
@@ -67,7 +67,7 @@ class rstation(
       nonfree => 1
     }
   }
-  ->
+
   class { 'mpd::server':
     music_directory => $music_directory,
     audio_outputs   => [{
